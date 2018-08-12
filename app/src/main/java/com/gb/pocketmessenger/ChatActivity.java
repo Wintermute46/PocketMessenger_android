@@ -84,13 +84,14 @@ public class ChatActivity extends AppCompatActivity
         if (id == R.id.nav_my_profile) {
             fragmentClass = MyProfileFragment.class;
         } else if (id == R.id.nav_contacts) {
-            fragmentClass = MyProfileFragment.class;
+            return true;
         } else if (id == R.id.nav_support) {
             fragmentClass = SupportFragment.class;
         } else if (id == R.id.nav_about) {
             fragmentClass = AboutFragment.class;
         } else if (id == R.id.nav_logout) {
             logout();
+            return true;
         }
         try {
             fragment = (Fragment) fragmentClass.newInstance();
