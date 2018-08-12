@@ -1,5 +1,6 @@
 package com.gb.pocketmessenger;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -68,8 +69,13 @@ public class ChatActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return false;
 
-        return id == R.id.action_settings || super.onOptionsItemSelected(item);
 
     }
 
