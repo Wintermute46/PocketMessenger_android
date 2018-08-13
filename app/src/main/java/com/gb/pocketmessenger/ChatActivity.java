@@ -99,8 +99,7 @@ public class ChatActivity extends AppCompatActivity
         if (id == R.id.nav_my_profile) {
             fragmentClass = MyProfileFragment.class;
         } else if (id == R.id.nav_contacts) {
-            //TODO add contacts tab
-            return true;
+            fragmentClass = TabsFragment.class;
         } else if (id == R.id.nav_support) {
             fragmentClass = SupportFragment.class;
         } else if (id == R.id.nav_about) {
