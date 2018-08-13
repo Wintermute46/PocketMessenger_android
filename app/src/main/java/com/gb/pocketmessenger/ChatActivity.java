@@ -90,6 +90,7 @@ public class ChatActivity extends AppCompatActivity
         if (id == R.id.nav_my_profile) {
             fragmentClass = MyProfileFragment.class;
         } else if (id == R.id.nav_contacts) {
+            //TODO add contacts tab
             return true;
         } else if (id == R.id.nav_support) {
             fragmentClass = SupportFragment.class;
@@ -100,7 +101,7 @@ public class ChatActivity extends AppCompatActivity
             return true;
         }
         try {
-            fragment = (Fragment) fragmentClass.newInstance();
+            fragment = (Fragment) (fragmentClass != null ? fragmentClass.newInstance() : null);
         } catch (Exception e) {
             e.printStackTrace();
         }
