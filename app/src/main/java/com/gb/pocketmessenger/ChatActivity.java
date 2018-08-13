@@ -1,9 +1,11 @@
 package com.gb.pocketmessenger;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
@@ -18,6 +20,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.gb.pocketmessenger.Adapters.FragmentPager;
+import com.gb.pocketmessenger.fragments.AboutFragment;
+import com.gb.pocketmessenger.fragments.MyProfileFragment;
+import com.gb.pocketmessenger.fragments.SupportFragment;
 import com.gb.pocketmessenger.fragments.TabsFragment;
 
 public class ChatActivity extends AppCompatActivity
@@ -73,41 +78,50 @@ public class ChatActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+            startActivity(intent);
             return true;
         }
+        return false;
 
-        return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+        Fragment fragment = null;
+        Class fragmentClass = null;
+
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        if (id == R.id.nav_my_profile) {
+            fragmentClass = MyProfileFragment.class;
+        } else if (id == R.id.nav_contacts) {
+            //TODO add contacts tab
+            return true;
+        } else if (id == R.id.nav_support) {
+            fragmentClass = SupportFragment.class;
+        } else if (id == R.id.nav_about) {
+            fragmentClass = AboutFragment.class;
+        } else if (id == R.id.nav_logout) {
+            logout();
+            return true;
         }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        try {
+            fragment = (Fragment) (fragmentClass != null ? fragmentClass.newInstance() : null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void logout() {
+        //TODO logout method
     }
 }

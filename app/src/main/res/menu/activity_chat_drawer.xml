@@ -3,36 +3,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group
+        android:id="@+id/nav_menu"
+        android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/nav_my_profile"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:title="@string/my_profile" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/nav_contacts"
+            android:icon="@drawable/ic_contacts_white_24dp"
+            android:title="@string/contacts" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_support"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="@string/support" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_info_outline_white_24dp"
+            android:title="@string/about" />
     </group>
-
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
-        </menu>
-    </item>
-
+    <group
+        android:id="@+id/nav_logout_group"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_redo_white_24dp"
+            android:title="@string/logout" />
+    </group>
 </menu>
