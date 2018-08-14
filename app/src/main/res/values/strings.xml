@@ -15,4 +15,8 @@
     <string name="support">Поддержка</string>
     <string name="about">О приложении</string>
     <string name="logout">Logout</string>
+
+    <string name="hint_enter_a_message">Введите сообщение</string>
+
+
 </resources>

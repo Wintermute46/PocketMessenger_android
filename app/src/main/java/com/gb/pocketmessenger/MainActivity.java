@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
         if (checkingToken()) {
             Intent intent = new Intent(this, ChatActivity.class);
             startActivity(intent);
+            finish();
         } else {
             //TODO:  Authorization and Registration fragments
             setContentView(R.layout.activity_main);

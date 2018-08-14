@@ -6,6 +6,8 @@ import com.stfalcon.chatkit.commons.models.IUser;
 import java.util.Date;
 
 public class Message implements IMessage {
+    public String text;
+
     @Override
     public String getId() {
         return null;
